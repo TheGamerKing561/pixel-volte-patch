@@ -87,4 +87,18 @@ dependencies {
     implementation "com.github.kittinunf.fuel:fuel-android:2.3.1"
     implementation "com.github.kittinunf.fuel:fuel-json:2.3.1"
     implementation 'net.swiftzer.semver:semver:1.1.2'
+    on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-dotnet@v3
+      - run: dotnet --version
+      - run: dotnet build
 }
